@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import Button from "components/Button";
 import GroupCard from "components/GroupCard";
 import Header from "components/Header";
@@ -14,6 +15,13 @@ const Groups = () => {
     "Amigos",
     "Familia",
   ]);
+
+  const { navigate } = useNavigation();
+
+  const handleNewGroup = () => {
+    navigate("NewGroup");
+  };
+
   return (
     <Container>
       <Header showBackButton={false} />
@@ -30,7 +38,7 @@ const Groups = () => {
         renderItem={({ item }) => <GroupCard key={item} title={item} />}
       />
 
-      <Button title="Criar nova conta" />
+      <Button title="Criar nova conta" onPress={handleNewGroup} />
     </Container>
   );
 };

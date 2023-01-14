@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import React from "react";
 
 import logoImg from "../../../assets/logo.png";
@@ -9,10 +10,15 @@ interface IProps {
 }
 
 const Header: React.FC<IProps> = ({ showBackButton = true }) => {
+  const { navigate } = useNavigation();
+
+  const handleGoBack = () => {
+    navigate("Groups");
+  };
   return (
     <Container>
       {showBackButton && (
-        <BackButton>
+        <BackButton onPress={handleGoBack}>
           <BackIcon />
         </BackButton>
       )}
